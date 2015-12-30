@@ -41,7 +41,7 @@ public class ReservationServiceApplication {
 	@Bean
 	CommandLineRunner runner(ReservationRepository rr){
 		return args -> {
-			Arrays.asList("Dr. rod,Dr. Syer,Juergen,ALL THE COMMUNITY,Josh".split(","))
+			Arrays.asList("The men are members of a Muslim biker gang called the Kamikaze Riders and are suspected to have discussed attacking Brussels' Grand Place square and other places where crowds gather as well as police and military facilities, a senior Belgian counterterrorism official told CNN".split(","))
 			.forEach( x -> rr.save(new Reservation(x)));;
 			rr.findAll().forEach( System.out::println);
 		};
