@@ -14,7 +14,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+//import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.annotation.Bean;
@@ -27,15 +27,15 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@EnableBinding(Sink.class)
+//@EnableBinding(Sink.class)
 @EnableDiscoveryClient
 @SpringBootApplication
 public class ReservationServiceApplication {
 	
-	@Bean
-	AlwaysSampler alwaysSampler(){
-		return new AlwaysSampler();
-	}
+//	@Bean
+//	AlwaysSampler alwaysSampler(){
+//		return new AlwaysSampler();
+//	}
 	
 	//起動的時候預先塞測試資料
 	@Bean
@@ -52,16 +52,16 @@ public class ReservationServiceApplication {
 	}
 }
 
-@MessageEndpoint
-class MessageReservationReceiver{
-	@Autowired
-	private ReservationRepository reservationRepository;
-	
-	@ServiceActivator(inputChannel = Sink.INPUT)
-	public void acceptReservation(String rn){
-		this.reservationRepository.save(new Reservation(rn));
-	}
-}
+//@MessageEndpoint
+//class MessageReservationReceiver{
+//	@Autowired
+//	private ReservationRepository reservationRepository;
+//	
+//	@ServiceActivator(inputChannel = Sink.INPUT)
+//	public void acceptReservation(String rn){
+//		this.reservationRepository.save(new Reservation(rn));
+//	}
+//}
 
 @RefreshScope
 @RestController
