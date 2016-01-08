@@ -71,6 +71,7 @@ class MessageRestControler{
 	
 	@RequestMapping("/message")
 	String message(){
+		System.out.println("被呼叫了");
 		return this.message;
 	}	
 }
