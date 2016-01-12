@@ -32,6 +32,8 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class ReservationServiceApplication {
 	
+	
+	
 //	@Bean
 //	AlwaysSampler alwaysSampler(){
 //		return new AlwaysSampler();
@@ -42,7 +44,7 @@ public class ReservationServiceApplication {
 	CommandLineRunner runner(ReservationRepository rr){
 		return args -> {
 			Arrays.asList("Dr. rod,Dr. Syer,Juergen,ALL THE COMMUNITY,Josh".split(","))
-			.forEach( x -> rr.save(new Reservation(x)));;
+			.forEach( x -> rr.save(new Reservation(x)));
 			rr.findAll().forEach( System.out::println);
 		};
 	}
@@ -65,13 +67,19 @@ public class ReservationServiceApplication {
 
 @RefreshScope
 @RestController
-class MessageRestControler{	
+class MessageRestControler{
+	
+	@Value("${local.server.port}")
+	int port;
+	
+	
 	@Value("${message}")
 	private String message;
 	
 	@RequestMapping("/message")
 	String message(){
 		System.out.println("被呼叫了");
+		System.out.println("port="+port);
 		return this.message;
 	}	
 }
