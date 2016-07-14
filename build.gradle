@@ -31,7 +31,7 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile("org.springframework.cloud:spring-cloud-starter-config:${springCloudVersion}")
-	compile("org.springframework.cloud:spring-cloud-starter-eureka:${springCloudVersion}")
+	compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.1.4.RELEASE'
 	/*
     compile("org.springframework.cloud:spring-cloud-starter-zipkin:${springCloudVersion}")
     */
