@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 //import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +29,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 //@EnableBinding(Sink.class)
-@EnableDiscoveryClient
+@EnableEurekaClient
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class ReservationServiceApplication {
 	
@@ -67,10 +69,11 @@ public class ReservationServiceApplication {
 
 @RefreshScope
 @RestController
+@RequestMapping(value = "/api")
 class MessageRestControler{
 	
-	@Value("${local.server.port}")
-	int port;
+	//@Value("${local.server.port}")
+	//int port;
 	
 	
 	@Value("${message}")
@@ -78,9 +81,9 @@ class MessageRestControler{
 	
 	@RequestMapping("/message")
 	String message(){
-		System.out.println("被呼叫了");
-		System.out.println("port="+port);
-		return this.message;
+		//System.out.println("被呼叫了");
+		//System.out.println("port="+port);
+		return "2.0.0";
 	}	
 }
 
